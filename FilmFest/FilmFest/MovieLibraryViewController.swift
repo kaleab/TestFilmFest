@@ -10,8 +10,12 @@ import UIKit
 import ChameleonFramework
 
 
-class MainViewController: UIViewController {
+class MovieLibraryViewController: UIViewController {
 
+    @IBOutlet weak var movieTableView: UITableView!
+    @IBOutlet var dataService: MovieLibraryDataService!
+    
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         
         return .lightContent
@@ -23,6 +27,9 @@ class MainViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 178/255, green: 178/255, blue: 122/255, alpha: 1)
         
         self.view.backgroundColor = GradientColor(.radial, frame: self.view.frame, colors:[UIColor.flatSkyBlue(), UIColor.flatNavyBlue()])
+        
+        self.movieTableView.dataSource = dataService
+        self.movieTableView.delegate = dataService
         
         
     }

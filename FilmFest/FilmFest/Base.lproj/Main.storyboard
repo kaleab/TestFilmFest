@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Movie Library View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="FilmFest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieLibraryVC" id="BYZ-38-t0r" customClass="MovieLibraryViewController" customModule="FilmFest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,7 +24,29 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQf-jf-M8Z" customClass="DropShadowView" customModule="FilmFest" customModuleProvider="target">
                                 <rect key="frame" x="33" y="125" width="308" height="500"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="crZ-ud-7jF">
+                                        <rect key="frame" x="0.0" y="0.0" width="308" height="500"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCellID" id="n19-K8-fIg">
+                                                <rect key="frame" x="0.0" y="28" width="308" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n19-K8-fIg" id="MLs-Ab-use">
+                                                    <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="crZ-ud-7jF" firstAttribute="leading" secondItem="iQf-jf-M8Z" secondAttribute="leading" id="BoA-Wt-kaz"/>
+                                    <constraint firstItem="crZ-ud-7jF" firstAttribute="top" secondItem="iQf-jf-M8Z" secondAttribute="top" id="FgJ-fW-cdD"/>
+                                    <constraint firstAttribute="bottom" secondItem="crZ-ud-7jF" secondAttribute="bottom" id="aLZ-2g-arV"/>
+                                    <constraint firstAttribute="trailing" secondItem="crZ-ud-7jF" secondAttribute="trailing" id="caH-Zi-L7Q"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                         <real key="value" value="1"/>
@@ -53,8 +75,13 @@
                             <constraint firstItem="iQf-jf-M8Z" firstAttribute="top" secondItem="rH1-lp-jMu" secondAttribute="bottom" constant="45" id="whH-1a-Lbp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dataService" destination="7XG-0j-dVm" id="EA6-eY-Kn3"/>
+                        <outlet property="movieTableView" destination="crZ-ud-7jF" id="ICd-QY-L0Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="7XG-0j-dVm" userLabel="MovieLibraryDataService" customClass="MovieLibraryDataService" customModule="FilmFest" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
